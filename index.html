@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="jqtree.css">
+
+    <script src="videos.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://underscorejs.org/underscore-min.js"></script>
+    <script src="main.js"></script>
+    <script src="tree.jquery.js"></script>
+
+
+    <title>Videos</title>
+</head>
+
+<body>
+    <div class="container-fluid py-5 m-0">
+        <div class="row">
+            <div class="col-lg-2">
+                <h4>Folders</h4>
+                <div class="folders">
+
+                </div>
+            </div>
+            <div class="col-lg-10">
+                <h4>Videos</h4>
+
+                <nav class="navbar navbar-light bg-light mb-3">
+                    <form class="form-inline">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">Tag</span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="" aria-label="" aria-describedby=" basic-addon1">
+                        </div>
+                    </form>
+                    <span class="folderPath">Path: root</span>
+                </nav>
+                <div class="container"></div>
+                <div class="card-columns videos">
+                    <script type="text/template" class="template">
+                        <div class='card'>
+                            <img class='card-img-top' src='<%= videos.thumbnail %>' alt='Card image cap' />
+                            <div class='card-body'>
+                                <h5 class='card-title'>
+                                    <%= videos.name %>
+                                </h5>
+                                <p class='card-text'>
+                                    <%= Math.floor(videos.duration / 60000) %> minutes <%= new Date(videos.dateCreated) %>
+                                </p>
+                                <p class='card-text'>
+                                    <%= videos.description %>
+                                </p>
+                                <p class='card-text'>
+                                    ID: <%= videos.id %>
+                                </p>
+                                <p class='card-text'>
+                                    Folder: <%= videos.folder %>
+                                </p>
+                            </div>
+
+                            <div class='card-footer'>
+                                <% if (videos.tags.length > 0) { %>
+                                    Tags:
+                                    <% for(var tag in videos.tags) { %>
+                                        <a href="#" class='badge badge-secondary mr-1'><%= videos.tags[tag] %></a>
+                                    <% } %>
+                                <% } else { %>
+                                    No tags
+                                <% } %>
+                            </div>
+                        </div>
+                    </script>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <footer>
+
+    </footer>
+
+</body>
+
+</html>
